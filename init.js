@@ -36,12 +36,16 @@ function installPackage(name) {
   });
 }
 
+function configSet(scope, opts) {
+  for (let key of Object.keys(opts)) {
+    atom.config.set(`${scope}.${key}`, opts[key]);
+  }
+}
+
 function usePackage(name, opts = {}) {
   // Set package config from the `config` object
   if (typeof opts.config === "object") {
-    for (let key of Object.keys(opts.config)) {
-      atom.config.set(`${name}.${key}`, opts.config[key]);
-    }
+    configSet(name, opts.config);
   }
 
   installPackage(name).then(() => {
@@ -306,3 +310,24 @@ usePackage("build-cargo", {
 usePackage("linter-rust");
 
 usePackage("rustsym");
+
+
+
+// General options
+
+configSet("core", {
+  autoHideMenuBar: true,
+  disabledPackages: [
+    "tabs",
+    "sync-settings"
+  ],
+  openEmptyEditorOnStart: false,
+  themes: ["atom-material-ui", "atom-dark-syntax"]
+});
+
+configSet("editor", {
+  fontFamily: "PragmataPro",
+  lineHeight: 1.3,
+  softWrap: true,
+  tabType: "soft"
+});
