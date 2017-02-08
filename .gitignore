@@ -1,0 +1,10 @@
+blob-store
+compile-cache
+dev
+storage
+.apm
+.node-gyp
+.npm
+/config.cson
+/keymap.cson
+/packages
