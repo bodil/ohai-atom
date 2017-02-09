@@ -266,6 +266,12 @@ usePackage("word-jumper-deluxe", {
   }
 });
 
+usePackage("file-watcher", {
+  config: {
+    autoReload: true
+  }
+});
+
 
 
 // PureScript
