@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "emissary": "~1.3.3",
+    "q": "~1.4.1",
+    "semver": "~5.2.0",
+    "underscore-plus": "^1.6.6"
+  }
+}

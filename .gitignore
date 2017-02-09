@@ -8,3 +8,4 @@ storage
 /config.cson
 /keymap.cson
 /packages
+/node_modules
