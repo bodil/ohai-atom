@@ -29,14 +29,14 @@ atom.keymaps.add(__filename, {
     "ctrl-alt-'": "editor:split-selections-into-lines"
   },
   "atom-workspace": {
-    'ctrl-x left': 'pane:split-left-and-copy-active-item',
-    'ctrl-x right': 'pane:split-right-and-copy-active-item',
-    'ctrl-x up': 'pane:split-up-and-copy-active-item',
-    'ctrl-x down': 'pane:split-down-and-copy-active-item',
-    'ctrl-x ctrl-left': 'window:focus-pane-on-left',
-    'ctrl-x ctrl-right': 'window:focus-pane-on-right',
-    'ctrl-x ctrl-up': 'window:focus-pane-above',
-    'ctrl-x ctrl-down': 'window:focus-pane-below'
+    "ctrl-x left": "pane:split-left-and-copy-active-item",
+    "ctrl-x right": "pane:split-right-and-copy-active-item",
+    "ctrl-x up": "pane:split-up-and-copy-active-item",
+    "ctrl-x down": "pane:split-down-and-copy-active-item",
+    "ctrl-x ctrl-left": "window:focus-pane-on-left",
+    "ctrl-x ctrl-right": "window:focus-pane-on-right",
+    "ctrl-x ctrl-up": "window:focus-pane-above",
+    "ctrl-x ctrl-down": "window:focus-pane-below"
   }
 });
 
@@ -92,16 +92,16 @@ usePackage("advanced-open-file", {
   },
   keymap: {
     ".advanced-open-file atom-text-editor": {
-      'up': 'advanced-open-file:move-cursor-up',
-      'down': 'advanced-open-file:move-cursor-down',
-      'left': 'advanced-open-file:delete-path-component',
-      'right': 'advanced-open-file:autocomplete',
-      'tab': 'advanced-open-file:autocomplete',
-      'ctrl-i': 'advanced-open-file:autocomplete',
-      'ctrl-p': 'advanced-open-file:move-cursor-up',
-      'ctrl-n': 'advanced-open-file:move-cursor-down',
-      'ctrl-w': 'advanced-open-file:delete-path-component',
-      'ctrl-/': 'advanced-open-file:undo'
+      "up": "advanced-open-file:move-cursor-up",
+      "down": "advanced-open-file:move-cursor-down",
+      "left": "advanced-open-file:delete-path-component",
+      "right": "advanced-open-file:autocomplete",
+      "tab": "advanced-open-file:autocomplete",
+      "ctrl-i": "advanced-open-file:autocomplete",
+      "ctrl-p": "advanced-open-file:move-cursor-up",
+      "ctrl-n": "advanced-open-file:move-cursor-down",
+      "ctrl-w": "advanced-open-file:delete-path-component",
+      "ctrl-/": "advanced-open-file:undo"
     }
   }
 });
