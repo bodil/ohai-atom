@@ -2,6 +2,26 @@
 
 import {usePackage, configSet} from "./use-package";
 
+
+
+// General options
+
+configSet("core", {
+  autoHideMenuBar: true,
+  disabledPackages: [
+    "background-tips",
+    "tabs"
+  ],
+  openEmptyEditorOnStart: false
+});
+
+configSet("editor", {
+  fontFamily: "PragmataPro",
+  lineHeight: 1.3,
+  softWrap: true,
+  tabType: "soft"
+});
+
 // General keybindings
 
 atom.keymaps.add(__filename, {
@@ -19,6 +39,8 @@ atom.keymaps.add(__filename, {
     'ctrl-x ctrl-down': 'window:focus-pane-below'
   }
 });
+
+
 
 // Packages
 
@@ -276,27 +298,3 @@ usePackage("build-cargo", {
 usePackage("linter-rust");
 
 usePackage("rustsym");
-
-
-
-
-
-// General options
-
-configSet("core", {
-  autoHideMenuBar: true,
-  disabledPackages: [
-    "background-tips",
-    "tabs",
-    "tree-view"
-  ],
-  openEmptyEditorOnStart: false,
-  themes: ["atom-dark-ui", "atom-dark-syntax"]
-});
-
-configSet("editor", {
-  fontFamily: "PragmataPro",
-  lineHeight: 1.3,
-  softWrap: true,
-  tabType: "soft"
-});
