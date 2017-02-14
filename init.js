@@ -1,6 +1,6 @@
 "use babel";
 
-import {usePackage, configSet} from "./use-package";
+import {usePackage, configSet} from "atom-use-package";
 import path from "path";
 
 //
