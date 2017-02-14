@@ -3,16 +3,13 @@
 import {usePackage, configSet} from "./use-package";
 import path from "path";
 
-
-
+//
+//
 // General options
 
 configSet("core", {
   autoHideMenuBar: true,
-  disabledPackages: [
-    "background-tips",
-    "tabs"
-  ],
+  disabledPackages: ["background-tips", "tabs"],
   openEmptyEditorOnStart: false
 });
 
@@ -23,6 +20,8 @@ configSet("editor", {
   tabType: "soft"
 });
 
+//
+//
 // General keybindings
 
 atom.keymaps.add(__filename, {
@@ -41,8 +40,8 @@ atom.keymaps.add(__filename, {
   }
 });
 
-
-
+//
+//
 // Packages
 
 usePackage("disable-keybindings", {
@@ -60,30 +59,31 @@ usePackage("monokai", {
   }
 });
 
-// usePackage("atom-material-ui", {
-//   config: {
-//     colors: {
-//       abaseColor: "#ec407a",
-//       accentColor: "#46ffc1",
-//       genAccent: true,
-//       predefinedColor: "Pink"
-//     },
-//     fonts: {
-//       fontSize: 15
-//     },
-//     tabs: {
-//       compactTabs: true,
-//       noTabMinWidth: true
-//     },
-//     ui: {
-//       panelContrast: true,
-//       panelShadows: true
-//     }
-//   }, init: () => {
-//     const syntax = atom.config.get("core.themes")[1];
-//     atom.config.set("core.themes", ["atom-material-ui", syntax]);
-//   }
-// });
+usePackage("atom-material-ui", {
+  config: {
+    colors: {
+      abaseColor: "#ec407a",
+      accentColor: "#46ffc1",
+      genAccent: true,
+      predefinedColor: "Pink"
+    },
+    fonts: {
+      fontSize: 15
+    },
+    tabs: {
+      compactTabs: true,
+      noTabMinWidth: true
+    },
+    ui: {
+      panelContrast: true,
+      panelShadows: true
+    }
+  },
+  init: () => {
+    const syntax = atom.config.get("core.themes")[1];
+    atom.config.set("core.themes", ["atom-material-ui", syntax]);
+  }
+});
 
 usePackage("advanced-open-file", {
   config: {
@@ -93,11 +93,11 @@ usePackage("advanced-open-file", {
   },
   keymap: {
     ".advanced-open-file atom-text-editor": {
-      "up": "advanced-open-file:move-cursor-up",
-      "down": "advanced-open-file:move-cursor-down",
-      "left": "advanced-open-file:delete-path-component",
-      "right": "advanced-open-file:autocomplete",
-      "tab": "advanced-open-file:autocomplete",
+      up: "advanced-open-file:move-cursor-up",
+      down: "advanced-open-file:move-cursor-down",
+      left: "advanced-open-file:delete-path-component",
+      right: "advanced-open-file:autocomplete",
+      tab: "advanced-open-file:autocomplete",
       "ctrl-i": "advanced-open-file:autocomplete",
       "ctrl-p": "advanced-open-file:move-cursor-up",
       "ctrl-n": "advanced-open-file:move-cursor-down",
@@ -280,8 +280,8 @@ usePackage("file-watcher", {
   }
 });
 
-
-
+//
+//
 // PureScript
 
 usePackage("language-purescript");
@@ -290,8 +290,8 @@ usePackage("ide-purescript", {
   enableKeys: true
 });
 
-
-
+//
+//
 // Rust
 
 usePackage("atom-language-rust");
@@ -315,11 +315,16 @@ usePackage("linter-rust");
 
 usePackage("rustsym");
 
-
-
+//
+//
 // JavaScript
 
 usePackage("linter-eslint", {
+  keymap: {
+    "atom-workspace atom-text-editor[data-grammar='source js']": {
+      "ctrl-c f": "linter-eslint:fix-file"
+    }
+  },
   config: {
     disableWhenNoEslintConfig: false,
     useGlobalEslint: true,
@@ -327,10 +332,16 @@ usePackage("linter-eslint", {
   }
 });
 
-usePackage("prettier-eslint", {
+usePackage("prettier-atom", {
   keymap: {
     "atom-workspace atom-text-editor[data-grammar='source js']": {
-      "ctrl-c tab": "prettier-eslint:format"
+      "ctrl-c tab": "prettier:format"
     }
+  },
+  config: {
+    formatOnSave: false,
+    singleQuote: false,
+    trailingComma: false,
+    bracketSpacing: false
   }
 });
