@@ -1,6 +1,7 @@
 "use babel";
 
 import {usePackage, configSet} from "./use-package";
+import path from "path";
 
 
 
@@ -210,9 +211,16 @@ usePackage("jumpy", {
 });
 
 usePackage("linter", {
+  keymap: {
+    "atom-workspace atom-text-editor:not([mini])": {
+      "alt-n": "linter:next-error",
+      "alt-p": "linter:previous-error"
+    }
+  },
   config: {
     lintOnFlyInterval: 1000,
-    showErrorTabLine: true
+    showErrorTabLine: true,
+    ignoreVCSIgnoredFiles: false
   }
 });
 
@@ -282,6 +290,8 @@ usePackage("ide-purescript", {
   enableKeys: true
 });
 
+
+
 // Rust
 
 usePackage("atom-language-rust");
@@ -305,6 +315,22 @@ usePackage("linter-rust");
 
 usePackage("rustsym");
 
+
+
 // JavaScript
 
-usePackage("linter-eslint");
+usePackage("linter-eslint", {
+  config: {
+    disableWhenNoEslintConfig: false,
+    useGlobalEslint: true,
+    eslintrcPath: path.join(process.env.HOME, ".eslintrc")
+  }
+});
+
+usePackage("prettier-eslint", {
+  keymap: {
+    "atom-workspace atom-text-editor[data-grammar='source js']": {
+      "ctrl-c tab": "prettier-eslint:format"
+    }
+  }
+});
