@@ -280,6 +280,8 @@ usePackage("file-watcher", {
   }
 });
 
+usePackage("atom-oss-license");
+
 //
 //
 // PureScript
