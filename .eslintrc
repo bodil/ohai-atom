@@ -20,6 +20,9 @@
   "globals": {
     "atom": true
   },
+  "settings": {
+    "import/core-modules": ["atom"]
+  },
   "rules": {
     "prettier/prettier": ["error", {"bracketSpacing": false}],
     "strict": 0,
