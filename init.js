@@ -230,6 +230,11 @@ usePackage("linter", {
 });
 
 usePackage("platformio-ide-terminal", {
+  keymap: {
+    "atom-workspace": {
+      "ctrl-x e": "toggle"
+    }
+  },
   config: {
     ansiColors: {
       normal: {
