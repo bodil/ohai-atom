@@ -323,8 +323,6 @@ usePackage("build-cargo", {
   }
 });
 
-usePackage("linter-rust");
-
 usePackage("rustsym");
 
 //
