@@ -176,6 +176,11 @@ usePackage("path-hyperclick");
 usePackage("run-in-atom");
 
 usePackage("autocomplete-plus", {
+  keymap: {
+    "atom-workspace atom-text-editor:not([mini])": {
+      "ctrl-\\": "activate"
+    }
+  },
   config: {
     autoActivationDelay: 1000,
     backspaceTriggersAutocomplete: true,
