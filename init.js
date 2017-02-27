@@ -47,7 +47,8 @@ atom.keymaps.add(__filename, {
 usePackage("disable-keybindings", {
   config: {
     allCommunityPackages: true,
-    exceptCommunityPackages: []
+    exceptCommunityPackages: [],
+    prefixKeys: ["ctrl-k"]
   }
 });
 
