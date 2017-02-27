@@ -193,7 +193,7 @@ usePackage("autocomplete-plus", {
 usePackage("build", {
   enableKeys: true,
   config: {
-    panelVisibility: "Toggle",
+    panelVisibility: "Keep Visible",
     refreshOnShowTargetList: true,
     buildOnSave: true,
     saveOnBuild: true,
