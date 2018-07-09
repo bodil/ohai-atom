@@ -6,7 +6,10 @@ storage
 .node-gyp
 .npm
 /config.cson
+/github.cson
 /keymap.cson
+/linter-config.json
+/package-lock.json
 /packages
 /node_modules
 /recovery

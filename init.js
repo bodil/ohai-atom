@@ -1,7 +1,6 @@
 "use babel";
 
-import {usePackage, configSet} from "atom-use-package";
-import path from "path";
+import { usePackage, configSet } from "atom-use-package";
 
 //
 //
@@ -10,7 +9,9 @@ import path from "path";
 configSet("core", {
   autoHideMenuBar: true,
   disabledPackages: ["background-tips", "tabs"],
-  openEmptyEditorOnStart: false
+  openEmptyEditorOnStart: false,
+  restorePreviousWindowsOnStart: "no",
+  themes: ["atom-dark-ui", "atom-dark-syntax"]
 });
 
 configSet("editor", {
@@ -25,8 +26,14 @@ configSet("editor", {
 // General keybindings
 
 atom.keymaps.add(__filename, {
-  "atom-text-editor:not([mini])": {
-    "ctrl-alt-'": "editor:split-selections-into-lines"
+  "atom-workspace atom-text-editor:not([mini])": {
+    "ctrl-alt-'": "editor:split-selections-into-lines",
+    "ctrl-a": "editor:move-to-beginning-of-screen-line",
+    "ctrl-e": "editor:move-to-end-of-line",
+    "ctrl-up": "editor:move-to-beginning-of-previous-paragraph",
+    "ctrl-down": "editor:move-to-beginning-of-next-paragraph",
+    "ctrl-shift-up": "editor:select-to-beginning-of-previous-paragraph",
+    "ctrl-shift-down": "editor:select-to-beginning-of-next-paragraph"
   },
   "atom-workspace": {
     "ctrl-x left": "pane:split-left-and-copy-active-item",
@@ -36,7 +43,9 @@ atom.keymaps.add(__filename, {
     "ctrl-x ctrl-left": "window:focus-pane-on-left",
     "ctrl-x ctrl-right": "window:focus-pane-on-right",
     "ctrl-x ctrl-up": "window:focus-pane-above",
-    "ctrl-x ctrl-down": "window:focus-pane-below"
+    "ctrl-x ctrl-down": "window:focus-pane-below",
+    "ctrl-x t": "tree-view:toggle",
+    "ctrl-x ctrl-g": "project-find:toggle"
   }
 });
 
@@ -46,45 +55,21 @@ atom.keymaps.add(__filename, {
 
 usePackage("disable-keybindings", {
   config: {
+    allBundledPackages: true,
     allCommunityPackages: true,
     exceptCommunityPackages: [],
     prefixKeys: ["ctrl-k"]
   }
 });
 
-usePackage("contrast-light-syntax");
-usePackage("monokai", {
-  init: () => {
-    // const ui = atom.config.get("core.themes")[0];
-    atom.config.set("core.themes", ["atom-dark-ui", "monokai"]);
-  }
-});
+usePackage("base16-syntax");
+usePackage("file-icons");
 
-usePackage("atom-material-ui", {
-  config: {
-    colors: {
-      abaseColor: "#ec407a",
-      accentColor: "#46ffc1",
-      genAccent: true,
-      predefinedColor: "Pink"
-    },
-    fonts: {
-      fontSize: 15
-    },
-    tabs: {
-      compactTabs: true,
-      noTabMinWidth: true
-    },
-    ui: {
-      panelContrast: true,
-      panelShadows: true
-    }
-  },
-  init: () => {
-    const syntax = atom.config.get("core.themes")[1];
-    atom.config.set("core.themes", ["atom-material-ui", syntax]);
-  }
-});
+// usePackage("monokai", {
+//   init: () => {
+//     atom.config.set("core.themes", ["atom-dark-ui", "monokai"]);
+//   }
+// });
 
 usePackage("advanced-open-file", {
   config: {
@@ -116,6 +101,13 @@ usePackage("emacs-tab", {
   enableKeys: true
 });
 
+usePackage("organized", {
+  enableKeys: true,
+  config: {
+    enableToolbarSupport: false
+  }
+});
+
 usePackage("find-and-replace", {
   keymap: {
     "atom-text-editor:not([mini])": {
@@ -125,10 +117,10 @@ usePackage("find-and-replace", {
   }
 });
 
-usePackage("clipboard-plus", {
+usePackage("clipboard-history", {
   keymap: {
     "atom-text-editor:not([mini])": {
-      "alt-y": "toggle"
+      "alt-y": "paste"
     }
   }
 });
@@ -166,19 +158,17 @@ usePackage("fuzzy-finder", {
   }
 });
 
-usePackage("hyperclick", {
-  enableKeys: true
+usePackage("magic-reflow", {
+  keymap: {
+    "atom-workspace atom-text-editor.emacs-plus:not([mini])": {
+      "alt-q": "reflow"
+    }
+  }
 });
-usePackage("hyperclick-markdown");
-usePackage("hyperlink-hyperclick");
-usePackage("js-hyperclick");
-usePackage("path-hyperclick");
-
-usePackage("run-in-atom");
 
 usePackage("autocomplete-plus", {
   keymap: {
-    "atom-workspace atom-text-editor:not([mini])": {
+    "atom-text-editor:not([mini])": {
       "ctrl-\\": "activate"
     }
   },
@@ -191,86 +181,30 @@ usePackage("autocomplete-plus", {
   }
 });
 
-usePackage("build", {
-  enableKeys: true,
-  config: {
-    panelVisibility: "Keep Visible",
-    refreshOnShowTargetList: true,
-    buildOnSave: true,
-    saveOnBuild: true,
-    scrollOnError: true,
-    stealFocus: false
-  }
-});
-
-usePackage("atomatigit", {
-  enableKeys: true,
+usePackage("github", {
   keymap: {
     "atom-workspace": {
-      "ctrl-x g": "toggle"
+      "ctrl-x g": "github:toggle-git-tab"
     }
   }
 });
 
 usePackage("jumpy", {
-  enableKeys: true
-});
-
-usePackage("linter", {
   keymap: {
-    "atom-workspace atom-text-editor:not([mini])": {
-      "alt-n": "linter:next-error",
-      "alt-p": "linter:previous-error"
-    }
-  },
-  config: {
-    lintOnFlyInterval: 1000,
-    showErrorTabLine: true,
-    ignoreVCSIgnoredFiles: false
-  }
-});
-
-usePackage("platformio-ide-terminal", {
-  keymap: {
-    "atom-workspace": {
-      "ctrl-x e": "toggle"
-    }
-  },
-  config: {
-    ansiColors: {
-      normal: {
-        blue: "#4c4cff"
-      },
-      zBright: {
-        brightBlue: "#6565d1"
-      }
+    "atom-text-editor:not([mini])": {
+      "ctrl-;": "toggle"
     },
-    style: {
-      animationSpeed: 100,
-      defaultPanelHeight: "20%",
-      fontFamily: "PragmataPro",
-      theme: "solarized-dark"
-    },
-    toggles: {
-      autoClose: true
+    "atom-text-editor.jumpy-jump-mode:not([mini])": {
+      backspace: "reset",
+      "ctrl-g": "clear"
     }
   }
 });
 
-usePackage("underline-trailing-whitespace");
-
+usePackage("trailing-spaces");
 usePackage("spaces-in-braces");
-
-usePackage("project-jump", {
-  keymap: {
-    "atom-workspace": {
-      "ctrl-x p a": "project-jump:add",
-      "ctrl-x p o": "project-jump:open",
-      "ctrl-x p p": "project-jump:switch",
-      "ctrl-x p r": "project-jump:remove"
-    }
-  }
-});
+usePackage("atom-oss-license");
+usePackage("undo-tree");
 
 usePackage("word-jumper-deluxe", {
   keymap: {
@@ -285,13 +219,152 @@ usePackage("word-jumper-deluxe", {
   }
 });
 
+usePackage("project-jump", {
+  keymap: {
+    "atom-workspace": {
+      "ctrl-x p a": "project-jump:add",
+      "ctrl-x p o": "project-jump:open",
+      "ctrl-x p p": "project-jump:switch",
+      "ctrl-x p r": "project-jump:remove"
+    }
+  }
+});
+
 usePackage("file-watcher", {
   config: {
     autoReload: true
   }
 });
 
-usePackage("atom-oss-license");
+usePackage("docblockr", {
+  enableKeys: true
+});
+
+usePackage("atom-beautify", {
+  keymap: {
+    "atom-workspace atom-text-editor": {
+      "ctrl-c ctrl-f": "beautify-editor"
+    }
+  }
+});
+
+//
+//
+// Build
+
+// usePackage("build", {
+//   config: {
+//     panelVisibility: "Keep Visible",
+//     refreshOnShowTargetList: true,
+//     buildOnSave: false,
+//     saveOnBuild: true,
+//     scrollOnError: true,
+//     stealFocus: false
+//   }
+// });
+
+usePackage("build-tools", {
+  keymap: {
+    "atom-workspace": {
+      "ctrl-c p shift-p": "first-command-ask",
+      "ctrl-c ctrl-s": "first-command",
+      "ctrl-c p c": "commands",
+      "ctrl-c p p": "toggle",
+      "ctrl-l ctrl-s": "unset!"
+    }
+  }
+});
+
+//
+//
+// Atom IDE
+
+usePackage("atom-ide-ui", {
+  keymap: {
+    "atom-workspace atom-text-editor.enable-atom-ide-find-references": {
+      "ctrl-c ctrl-f": "code-format:format-code"
+    },
+    "atom-workspace atom-text-editor.emacs-plus:not([mini])": {
+      "alt-n": "diagnostics:go-to-next-diagnostic",
+      "alt-p": "diagnostics:go-to-previous-diagnostic",
+      "ctrl-c s": "diagnostics:show-actions-at-position",
+      "ctrl-c alt-s": "diagnostics:fix-all-in-current-file",
+      "ctrl-c r": "find-references:activate",
+      "ctrl-t": "datatip:toggle",
+      "alt-.": "hyperclick:confirm-cursor"
+    },
+    "atom-workspace": {
+      "ctrl-c t": "outline-view:toggle",
+      "ctrl-c l": "diagnostics:toggle-table"
+    }
+  },
+  config: {
+    "atom-ide-find-references": {
+      defaultLocationForPane: "right"
+    },
+    "atom-ide-diagnostics-ui": {
+      autoVisibility: true
+    },
+    "atom-ide-code-format": {
+      formatOnSave: true
+    },
+    "atom-ide-terminal": {
+      fontFamily: "PragmataPro"
+    }
+  }
+});
+
+usePackage("ide-typescript", {
+  config: {
+    returnTypeInAutocomplete: "right"
+  }
+});
+
+//
+//
+// Rust
+
+configSet(
+  "editor",
+  {
+    preferredLineLength: 80
+  },
+  { scopeSelector: ".rust.source" }
+);
+
+usePackage("ide-rust", {
+  config: {
+    rlsToolchain: "nightly",
+    rlsDefaultConfig: {
+      allTargets: "On",
+      clippyPreference: "On"
+    }
+  }
+});
+
+usePackage("autocomplete-crates");
+// usePackage("rustsym");
+
+//
+//
+// JavaScript
+
+usePackage("linter-eslint");
+
+usePackage("prettier-atom", {
+  keymap: {
+    "atom-workspace atom-text-editor[data-grammar='source js']": {
+      "ctrl-c ctrl-f": "prettier:format"
+    }
+  },
+  config: {
+    useEslint: true,
+    formatOnSave: false,
+    singleQuote: false,
+    trailingComma: false,
+    bracketSpacing: false
+  }
+});
 
 //
 //
@@ -305,54 +378,8 @@ usePackage("ide-purescript", {
 
 //
 //
-// Rust
+// Misc languages
 
-usePackage("atom-language-rust");
-
-usePackage("racer", {
-  config: {
-    racerBinPath: "/home/bodil/.cargo/bin/racer",
-    rustSrcPath: "/home/bodil/workspace/rust/src/rustc-1.15.0-src/src"
-  }
-});
-
-usePackage("build-cargo", {
-  config: {
-    extCommands: {
-      cargoCheck: true
-    }
-  }
-});
-
-usePackage("rustsym");
-
-//
-//
-// JavaScript
-
-usePackage("linter-eslint", {
-  keymap: {
-    "atom-workspace atom-text-editor[data-grammar='source js']": {
-      "ctrl-c f": "linter-eslint:fix-file"
-    }
-  },
-  config: {
-    disableWhenNoEslintConfig: false,
-    useGlobalEslint: true,
-    eslintrcPath: path.join(process.env.HOME, ".eslintrc")
-  }
-});
-
-usePackage("prettier-atom", {
-  keymap: {
-    "atom-workspace atom-text-editor[data-grammar='source js']": {
-      "ctrl-c tab": "prettier:format"
-    }
-  },
-  config: {
-    formatOnSave: false,
-    singleQuote: false,
-    trailingComma: false,
-    bracketSpacing: false
-  }
-});
+usePackage("linter-jsonlint");
+usePackage("language-papyrus");
+usePackage("language-stellaris");
