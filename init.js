@@ -308,28 +308,35 @@ usePackage("atom-beautify", {
 //
 // Build
 
-// usePackage("build", {
-//   config: {
-//     panelVisibility: "Keep Visible",
-//     refreshOnShowTargetList: true,
-//     buildOnSave: false,
-//     saveOnBuild: true,
-//     scrollOnError: true,
-//     stealFocus: false
-//   }
-// });
-
-usePackage("build-tools", {
+usePackage("build", {
+  config: {
+    panelVisibility: "Keep Visible",
+    refreshOnShowTargetList: true,
+    buildOnSave: false,
+    saveOnBuild: true,
+    scrollOnError: true,
+    stealFocus: false
+  },
   keymap: {
     "atom-workspace": {
-      "ctrl-c p shift-p": "first-command-ask",
-      "ctrl-c ctrl-s": "first-command",
-      "ctrl-c p c": "commands",
-      "ctrl-c p p": "toggle",
-      "ctrl-l ctrl-s": "unset!"
+      "ctrl-c b c": "select-active-target",
+      "ctrl-c b b": "toggle-panel",
+      "ctrl-c ctrl-s": "trigger"
     }
   }
 });
+
+// usePackage("build-tools", {
+//   keymap: {
+//     "atom-workspace": {
+//       "ctrl-c p shift-p": "first-command-ask",
+//       "ctrl-c ctrl-s": "first-command",
+//       "ctrl-c p c": "commands",
+//       "ctrl-c p p": "toggle",
+//       "ctrl-l ctrl-s": "unset!"
+//     }
+//   }
+// });
 
 //
 //
@@ -397,6 +404,8 @@ usePackage("ide-rust", {
     }
   }
 });
+
+usePackage("build-cargo");
 
 usePackage("autocomplete-crates");
 // usePackage("rustsym");
