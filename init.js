@@ -173,11 +173,15 @@ usePackage("organized", {
   }
 });
 
-usePackage("find-and-replace", {
+usePackage("incsearch", {
   keymap: {
-    "atom-text-editor:not([mini])": {
-      "ctrl-'": "select-next",
-      "ctrl-shift-'": "select-all"
+    "atom-workspace atom-text-editor.emacs-plus:not([mini])": {
+      "ctrl-s": "toggle",
+      "ctrl-r": "toggle"
+    },
+    ".incsearch": {
+      "ctrl-s": "incsearch:goto:next-match",
+      "ctrl-r": "incsearch:goto:prev-match"
     }
   }
 });
