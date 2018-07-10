@@ -1,6 +1,6 @@
 "use babel";
 
-import { usePackage, configSet } from "atom-use-package";
+import {usePackage, configSet} from "atom-use-package";
 
 //
 //
@@ -25,6 +25,63 @@ configSet("editor", {
 //
 // General keybindings
 
+function subwordNavigateCursor(cursor, selection, moveToNext, lookRight) {
+  const oldPos = cursor.getBufferPosition();
+  moveToNext(cursor, selection);
+  const pos = cursor.getBufferPosition();
+  if (oldPos.isEqual(pos)) {
+    return;
+  }
+  const line = cursor.getCurrentBufferLine();
+  const column = cursor.getScreenColumn();
+  const next = lookRight ? line.substr(column, 1) : line.substr(column - 1, 1);
+  if (!/\w/.test(next)) {
+    subwordNavigateCursor(cursor, selection, moveToNext, lookRight);
+  }
+}
+
+function subwordNavigate(step, lookRight) {
+  return function(event) {
+    const editor = event.currentTarget.getModel();
+    if (editor && atom.workspace.isTextEditor(editor)) {
+      const selection = editor.getSelections();
+      editor.getCursors().forEach((cursor, i) => {
+        subwordNavigateCursor(cursor, selection[i], step, lookRight);
+      });
+    }
+  };
+}
+
+atom.commands.add(
+  "atom-workspace atom-text-editor",
+  "editor:emacs-move-subword-left",
+  subwordNavigate((cursor, _) => cursor.moveToPreviousSubwordBoundary(), true)
+);
+
+atom.commands.add(
+  "atom-workspace atom-text-editor",
+  "editor:emacs-move-subword-right",
+  subwordNavigate((cursor, _) => cursor.moveToNextSubwordBoundary(), false)
+);
+
+atom.commands.add(
+  "atom-workspace atom-text-editor",
+  "editor:emacs-select-subword-left",
+  subwordNavigate(
+    (_, selection) => selection.selectToPreviousSubwordBoundary(),
+    true
+  )
+);
+
+atom.commands.add(
+  "atom-workspace atom-text-editor",
+  "editor:emacs-select-subword-right",
+  subwordNavigate(
+    (_, selection) => selection.selectToNextSubwordBoundary(),
+    false
+  )
+);
+
 atom.keymaps.add(__filename, {
   "atom-workspace atom-text-editor:not([mini])": {
     "ctrl-alt-'": "editor:split-selections-into-lines",
@@ -34,6 +91,14 @@ atom.keymaps.add(__filename, {
     "ctrl-down": "editor:move-to-beginning-of-next-paragraph",
     "ctrl-shift-up": "editor:select-to-beginning-of-previous-paragraph",
     "ctrl-shift-down": "editor:select-to-beginning-of-next-paragraph"
+  },
+  "atom-workspace atom-text-editor": {
+    "ctrl-left": "editor:emacs-move-subword-left",
+    "ctrl-right": "editor:emacs-move-subword-right",
+    "ctrl-shift-left": "editor:emacs-select-subword-left",
+    "ctrl-shift-right": "editor:emacs-select-subword-right",
+    "ctrl-backspace": "editor:delete-to-beginning-of-subword",
+    "ctrl-delete": "editor:delete-to-end-of-subword"
   },
   "atom-workspace": {
     "ctrl-x left": "pane:split-left-and-copy-active-item",
@@ -206,19 +271,6 @@ usePackage("spaces-in-braces");
 usePackage("atom-oss-license");
 usePackage("undo-tree");
 
-usePackage("word-jumper-deluxe", {
-  keymap: {
-    "atom-workspace atom-text-editor:not([mini])": {
-      "ctrl-left": "word-jumper-deluxe:move-left",
-      "ctrl-backspace": "word-jumper-deluxe:remove-left",
-      "ctrl-shift-left": "word-jumper-deluxe:select-left",
-      "ctrl-right": "word-jumper-deluxe:move-right",
-      "ctrl-del": "word-jumper-deluxe:remove-right",
-      "ctrl-shift-right": "word-jumper-deluxe:select-right"
-    }
-  }
-});
-
 usePackage("project-jump", {
   keymap: {
     "atom-workspace": {
@@ -329,7 +381,7 @@ configSet(
   {
     preferredLineLength: 80
   },
-  { scopeSelector: ".rust.source" }
+  {scopeSelector: ".rust.source"}
 );
 
 usePackage("ide-rust", {
