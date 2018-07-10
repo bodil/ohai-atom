@@ -85,7 +85,7 @@ atom.commands.add(
 atom.keymaps.add(__filename, {
   "atom-workspace atom-text-editor:not([mini])": {
     "ctrl-alt-'": "editor:split-selections-into-lines",
-    "ctrl-a": "editor:move-to-beginning-of-screen-line",
+    "ctrl-a": "editor:move-to-first-character-of-line",
     "ctrl-e": "editor:move-to-end-of-line",
     "ctrl-up": "editor:move-to-beginning-of-previous-paragraph",
     "ctrl-down": "editor:move-to-beginning-of-next-paragraph",
