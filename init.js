@@ -330,6 +330,7 @@ usePackage("atom-beautify", {
 //     scrollOnError: true,
 //     stealFocus: false
 //   },
+<<<<<<< HEAD
 //   keymap: {
 //     "atom-workspace": {
 //       "ctrl-c b c": "select-active-target",
@@ -340,16 +341,28 @@ usePackage("atom-beautify", {
 // });
 
 // usePackage("build-tools", {
+=======
+>>>>>>> OK, let's try build-tools again. I can't decide between evils.
 //   keymap: {
 //     "atom-workspace": {
-//       "ctrl-c p shift-p": "first-command-ask",
-//       "ctrl-c ctrl-s": "first-command",
-//       "ctrl-c p c": "commands",
-//       "ctrl-c p p": "toggle",
-//       "ctrl-l ctrl-s": "unset!"
+//       "ctrl-c b c": "select-active-target",
+//       "ctrl-c b b": "toggle-panel",
+//       "ctrl-c ctrl-s": "trigger"
 //     }
 //   }
 // });
+
+usePackage("build-tools", {
+  keymap: {
+    "atom-workspace": {
+      "ctrl-c b s": "first-command-ask",
+      "ctrl-c ctrl-s": "first-command",
+      "ctrl-c b c": "commands",
+      "ctrl-c b b": "toggle",
+      "ctrl-l ctrl-s": "unset!"
+    }
+  }
+});
 
 //
 //
