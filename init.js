@@ -21,6 +21,10 @@ configSet("editor", {
   tabType: "soft"
 });
 
+configSet("atom-package-deps", {
+  ignored: ["prettier-atom", "linter-eslint", "linter-jsonlint"]
+});
+
 //
 //
 // General keybindings
