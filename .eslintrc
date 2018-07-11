@@ -86,7 +86,7 @@
     ],
     "camelcase": 2,
     "func-style": 0,
-    "linebreak-style": 2,
+    "linebreak-style": 0,
     "max-nested-callbacks": 0,
     "new-cap": 2,
     "no-lonely-if": 2,
