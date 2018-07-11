@@ -216,6 +216,8 @@ usePackage("expand-region", {
   }
 });
 
+usePackage("highlight-selected");
+
 usePackage("keybinding-cheatsheet", {
   keymap: {
     "atom-workspace": {
@@ -287,14 +289,23 @@ usePackage("trailing-spaces");
 usePackage("spaces-in-braces");
 usePackage("atom-oss-license");
 usePackage("undo-tree");
+usePackage("mouse-autohide");
 
 usePackage("project-manager", {
   keymap: {
+<<<<<<< HEAD
     "atom-workspace": {
       "ctrl-x p e": "edit-project",
       "ctrl-x p s": "save-project",
       "ctrl-x p p": "list-projets",
       "ctrl-x p shift-e": "edit-projects"
+=======
+    "atom-workspace atom-text-editor": {
+      "ctrl-x p p": "list-projects",
+      "ctrl-x p s": "save-project",
+      "ctrl-x p e": "edit-projects",
+      "ctrl-x p shift-e": "edit-project"
+>>>>>>> Some minor but important tweaks.
     }
   }
 });
