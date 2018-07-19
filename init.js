@@ -457,3 +457,4 @@ usePackage("ide-purescript", {
 usePackage("linter-jsonlint");
 usePackage("language-papyrus");
 usePackage("language-stellaris");
+usePackage("language-fish-shell");
