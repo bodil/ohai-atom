@@ -284,13 +284,13 @@ usePackage("spaces-in-braces");
 usePackage("atom-oss-license");
 usePackage("undo-tree");
 
-usePackage("project-jump", {
+usePackage("project-manager", {
   keymap: {
     "atom-workspace": {
-      "ctrl-x p a": "project-jump:add",
-      "ctrl-x p o": "project-jump:open",
-      "ctrl-x p p": "project-jump:switch",
-      "ctrl-x p r": "project-jump:remove"
+      "ctrl-x p e": "edit-project",
+      "ctrl-x p s": "save-project",
+      "ctrl-x p p": "list-projets",
+      "ctrl-x p shift-e": "edit-projects"
     }
   }
 });
@@ -317,23 +317,23 @@ usePackage("atom-beautify", {
 //
 // Build
 
-usePackage("build", {
-  config: {
-    panelVisibility: "Keep Visible",
-    refreshOnShowTargetList: true,
-    buildOnSave: false,
-    saveOnBuild: true,
-    scrollOnError: true,
-    stealFocus: false
-  },
-  keymap: {
-    "atom-workspace": {
-      "ctrl-c b c": "select-active-target",
-      "ctrl-c b b": "toggle-panel",
-      "ctrl-c ctrl-s": "trigger"
-    }
-  }
-});
+// usePackage("build", {
+//   config: {
+//     panelVisibility: "Keep Visible",
+//     refreshOnShowTargetList: true,
+//     buildOnSave: false,
+//     saveOnBuild: true,
+//     scrollOnError: true,
+//     stealFocus: false
+//   },
+//   keymap: {
+//     "atom-workspace": {
+//       "ctrl-c b c": "select-active-target",
+//       "ctrl-c b b": "toggle-panel",
+//       "ctrl-c ctrl-s": "trigger"
+//     }
+//   }
+// });
 
 // usePackage("build-tools", {
 //   keymap: {
