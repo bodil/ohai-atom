@@ -293,19 +293,11 @@ usePackage("mouse-autohide");
 
 usePackage("project-manager", {
   keymap: {
-<<<<<<< HEAD
     "atom-workspace": {
       "ctrl-x p e": "edit-project",
       "ctrl-x p s": "save-project",
       "ctrl-x p p": "list-projets",
       "ctrl-x p shift-e": "edit-projects"
-=======
-    "atom-workspace atom-text-editor": {
-      "ctrl-x p p": "list-projects",
-      "ctrl-x p s": "save-project",
-      "ctrl-x p e": "edit-projects",
-      "ctrl-x p shift-e": "edit-project"
->>>>>>> Some minor but important tweaks.
     }
   }
 });
@@ -324,53 +316,6 @@ usePackage("atom-beautify", {
   keymap: {
     "atom-workspace atom-text-editor": {
       "ctrl-c ctrl-f": "beautify-editor"
-    }
-  }
-});
-
-//
-//
-// Build
-
-// usePackage("build", {
-//   config: {
-//     panelVisibility: "Keep Visible",
-//     refreshOnShowTargetList: true,
-//     buildOnSave: false,
-//     saveOnBuild: true,
-//     scrollOnError: true,
-//     stealFocus: false
-//   },
-<<<<<<< HEAD
-//   keymap: {
-//     "atom-workspace": {
-//       "ctrl-c b c": "select-active-target",
-//       "ctrl-c b b": "toggle-panel",
-//       "ctrl-c ctrl-s": "trigger"
-//     }
-//   }
-// });
-
-// usePackage("build-tools", {
-=======
->>>>>>> OK, let's try build-tools again. I can't decide between evils.
-//   keymap: {
-//     "atom-workspace": {
-//       "ctrl-c b c": "select-active-target",
-//       "ctrl-c b b": "toggle-panel",
-//       "ctrl-c ctrl-s": "trigger"
-//     }
-//   }
-// });
-
-usePackage("build-tools", {
-  keymap: {
-    "atom-workspace": {
-      "ctrl-c b s": "first-command-ask",
-      "ctrl-c ctrl-s": "first-command",
-      "ctrl-c b c": "commands",
-      "ctrl-c b b": "toggle",
-      "ctrl-l ctrl-s": "unset!"
     }
   }
 });
