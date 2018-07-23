@@ -296,7 +296,7 @@ usePackage("project-manager", {
     "atom-workspace": {
       "ctrl-x p e": "edit-project",
       "ctrl-x p s": "save-project",
-      "ctrl-x p p": "list-projets",
+      "ctrl-x p p": "list-projects",
       "ctrl-x p shift-e": "edit-projects"
     }
   }
