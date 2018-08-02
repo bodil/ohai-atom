@@ -320,6 +320,15 @@ usePackage("atom-beautify", {
   }
 });
 
+usePackage("travis-ci-status", {
+  keymap: {
+    "atom-workspace": {
+      "ctrl-c t t": "toggle-build-matrix",
+      "ctrl-c t o": "open-on-travis"
+    }
+  }
+});
+
 //
 //
 // Atom IDE
@@ -339,7 +348,7 @@ usePackage("atom-ide-ui", {
       "alt-.": "hyperclick:confirm-cursor"
     },
     "atom-workspace": {
-      "ctrl-c t": "outline-view:toggle",
+      "ctrl-c o": "outline-view:toggle",
       "ctrl-c l": "diagnostics:toggle-table"
     }
   },
