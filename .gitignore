@@ -13,3 +13,4 @@ storage
 /packages
 /node_modules
 /recovery
+/projects.cson
