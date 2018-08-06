@@ -18,7 +18,8 @@ configSet("editor", {
   fontFamily: "PragmataPro",
   lineHeight: 1.3,
   softWrap: true,
-  tabType: "soft"
+  tabType: "soft",
+  scrollPastEnd: true
 });
 
 configSet("atom-package-deps", {
