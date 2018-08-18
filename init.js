@@ -412,6 +412,10 @@ usePackage("git-rebase", {
   enableKeys: true
 });
 
+usePackage("autoclose-html", {
+  enableKeys: true
+});
+
 //
 //
 // Atom IDE
