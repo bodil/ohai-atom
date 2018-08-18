@@ -130,7 +130,8 @@ atom.keymaps.add(__filename, {
     "ctrl-x ctrl-up": "window:focus-pane-above",
     "ctrl-x ctrl-down": "window:focus-pane-below",
     "ctrl-x t": "tree-view:toggle",
-    "ctrl-x ctrl-g": "project-find:toggle"
+    "ctrl-x ctrl-g": "project-find:toggle",
+    "ctrl-c b": "window:toggle-bottom-dock"
   }
 });
 
@@ -376,6 +377,32 @@ usePackage("narrow", {
       "ctrl-t": "narrow:relocate"
     }
   }
+});
+
+usePackage("git-plus", {
+  config: {
+    general: {
+      alwaysOpenDockWithResult: true,
+      splitPane: "Right"
+    },
+    remoteInteractions: {
+      pullAutostash: true,
+      pullBeforePush: true
+    },
+    tags: {
+      signTags: true
+    }
+  },
+  keymap: {
+    "atom-workspace": {
+      "ctrl-c g": "git-plus:menu",
+      "ctrl-c ctrl-g": "git-plus:run"
+    }
+  }
+});
+
+usePackage("git-rebase", {
+  enableKeys: true
 });
 
 //
