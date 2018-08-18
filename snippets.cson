@@ -1,0 +1,61 @@
+".source.rust":
+  "MPL Header":
+    "prefix": "mpl"
+    "body": """
+      // This Source Code Form is subject to the terms of the Mozilla Public
+      // License, v. 2.0. If a copy of the MPL was not distributed with this
+      // file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    """
+  "impl Default":
+    "prefix": "Default"
+    "body": """
+      impl Default for ${1:Type} {
+          fn default() -> Self {
+              ${2:Self::new()}
+          }
+      }
+    """
+  "default":
+    "prefix": "default"
+    "body": """
+      fn default() -> Self {
+          ${1:Self::new()}
+      }
+    """
+  "impl Clone":
+    "prefix": "Clone"
+    "body": """
+      impl Clone for ${1:Type} {
+          fn clone(&self) -> Self {
+              $2
+          }
+      }
+    """
+  "clone":
+    "prefix": "clone"
+    "body": """
+      fn clone(&self) -> Self {
+          $1
+      }
+    """
+  "len":
+    "prefix": "len"
+    "body": """
+      fn len(&self) -> usize {
+          $1
+      }
+    """
+  "is_empty":
+    "prefix": "is_empty"
+    "body": """
+      fn is_empty(&self) -> bool {
+          ${1:self.len() == 0}
+      }
+    """
+  "new":
+    "prefix": "new"
+    "body": """
+      fn new() -> Self {
+          $1
+      }
+    """
