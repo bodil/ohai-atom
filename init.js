@@ -14,7 +14,7 @@ configSet("core", {
   disabledPackages: ["background-tips", "tabs"],
   openEmptyEditorOnStart: false,
   restorePreviousWindowsOnStart: "no",
-  themes: ["atom-dark-ui", "atom-dark-syntax"]
+  themes: darkThemes
 });
 
 configSet("editor", {
