@@ -6,6 +6,9 @@ import {usePackage, configSet} from "atom-use-package";
 //
 // General options
 
+const darkThemes = ["atom-dark-ui", "atom-dark-syntax"];
+const lightThemes = ["atom-light-ui", "atom-light-syntax"];
+
 configSet("core", {
   autoHideMenuBar: true,
   disabledPackages: ["background-tips", "tabs"],
@@ -85,6 +88,18 @@ atom.commands.add(
     (_, selection) => selection.selectToNextSubwordBoundary(),
     false
   )
+);
+
+atom.commands.add("atom-workspace", "application:switch-to-light-theme", _e =>
+  configSet("core", {
+    themes: lightThemes
+  })
+);
+
+atom.commands.add("atom-workspace", "application:switch-to-dark-theme", _e =>
+  configSet("core", {
+    themes: darkThemes
+  })
 );
 
 atom.keymaps.add(__filename, {
