@@ -353,6 +353,31 @@ usePackage("rustsym", {
   }
 });
 
+usePackage("narrow", {
+  keymap: {
+    "atom-workspace atom-text-editor.emacs-plus:not([mini])": {
+      "ctrl-c ctrl-s": "scan",
+      "ctrl-c s": "search"
+    },
+    "atom-workspace.has-narrow atom-text-editor": {
+      "ctrl-g": "close",
+      "ctrl-f": "narrow:focus",
+      "ctrl-i": "narrow:focus-prompt"
+    },
+    ".narrow-editor": {
+      "ctrl-g": "close",
+      enter: "core:confirm",
+      backspace: "narrow-ui:exclude-file",
+      "ctrl-backspace": "narrow-ui:clear-excluded-files",
+      n: "narrow-ui:move-to-next-file-item",
+      p: "narrow-ui:move-to-previous-file-item",
+      "ctrl-f": "narrow:focus",
+      "ctrl-i": "narrow:focus-prompt",
+      "ctrl-t": "narrow:relocate"
+    }
+  }
+});
+
 //
 //
 // Atom IDE
