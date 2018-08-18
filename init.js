@@ -345,6 +345,14 @@ usePackage("travis-ci-status", {
   }
 });
 
+usePackage("rustsym", {
+  keymap: {
+    "atom-workspace atom-text-editor": {
+      "ctrl-.": "symbols-view:toggle-file-symbols"
+    }
+  }
+});
+
 //
 //
 // Atom IDE
