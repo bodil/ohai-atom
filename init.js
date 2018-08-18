@@ -131,7 +131,14 @@ atom.keymaps.add(__filename, {
     "ctrl-x ctrl-down": "window:focus-pane-below",
     "ctrl-x t": "tree-view:toggle",
     "ctrl-x ctrl-g": "project-find:toggle",
-    "ctrl-c b": "window:toggle-bottom-dock"
+    "ctrl-c b": "window:toggle-bottom-dock",
+    "ctrl-c n": "window:toggle-right-dock",
+    "ctrl-x ctrl-c": "window:close"
+  },
+  ".tree-view": {
+    enter: "tree-view:expand-item",
+    right: "tree-view:expand-item",
+    left: "tree-view:collapse-directory"
   }
 });
 
