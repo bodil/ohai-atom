@@ -292,7 +292,8 @@ usePackage("autocomplete-plus", {
 usePackage("github", {
   keymap: {
     "atom-workspace": {
-      "ctrl-x g": "github:toggle-git-tab"
+      "ctrl-x g": "github:toggle-git-tab",
+      "ctrl-x h": "github:toggle-github-tab"
     }
   }
 });
