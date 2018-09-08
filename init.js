@@ -521,6 +521,16 @@ usePackage("ide-purescript", {
 
 //
 //
+// Everybody loves XML
+usePackage("tag");
+usePackage("double-tag", {
+  config: {
+    allowEndTagSync: true
+  }
+});
+
+//
+//
 // Misc languages
 
 usePackage("linter-jsonlint");
