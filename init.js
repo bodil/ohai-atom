@@ -121,6 +121,8 @@ atom.keymaps.add(__filename, {
     "ctrl-delete": "editor:delete-to-end-of-subword"
   },
   "atom-workspace": {
+    "ctrl-x p p": "application:reopen-project",
+    "ctrl-x p shift-p": "application:open-folder",
     "ctrl-x left": "pane:split-left-and-copy-active-item",
     "ctrl-x right": "pane:split-right-and-copy-active-item",
     "ctrl-x up": "pane:split-up-and-copy-active-item",
@@ -315,17 +317,6 @@ usePackage("spaces-in-braces");
 usePackage("atom-oss-license");
 usePackage("undo-tree");
 usePackage("mouse-autohide");
-
-usePackage("project-manager", {
-  keymap: {
-    "atom-workspace": {
-      "ctrl-x p e": "edit-project",
-      "ctrl-x p s": "save-project",
-      "ctrl-x p p": "list-projects",
-      "ctrl-x p shift-e": "edit-projects"
-    }
-  }
-});
 
 usePackage("file-watcher", {
   config: {
