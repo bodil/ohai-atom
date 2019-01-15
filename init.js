@@ -378,28 +378,6 @@ usePackage("narrow", {
   }
 });
 
-usePackage("git-plus", {
-  config: {
-    general: {
-      alwaysOpenDockWithResult: true,
-      splitPane: "Right"
-    },
-    remoteInteractions: {
-      pullAutostash: true,
-      pullBeforePush: true
-    },
-    tags: {
-      signTags: true
-    }
-  },
-  keymap: {
-    "atom-workspace": {
-      "ctrl-c g": "git-plus:menu",
-      "ctrl-c ctrl-g": "git-plus:run"
-    }
-  }
-});
-
 usePackage("git-rebase", {
   enableKeys: true
 });
