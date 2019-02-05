@@ -6,8 +6,8 @@ import {usePackage, configSet} from "atom-use-package";
 //
 // General options
 
-const darkThemes = ["atom-dark-ui", "atom-dark-syntax"];
-const lightThemes = ["atom-light-ui", "atom-light-syntax"];
+const darkThemes = ["one-dark-ui", "atom-dark-syntax"];
+const lightThemes = ["one-light-ui", "atom-light-syntax"];
 
 configSet("core", {
   autoHideMenuBar: true,
