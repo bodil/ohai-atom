@@ -1,0 +1,45 @@
+{
+  "name": "incremental-search",
+  "main": "./lib/isearch",
+  "version": "5.2.2",
+  "description": "Incremental search for Atom",
+  "activationCommands": {
+    "atom-workspace": [
+      "incremental-search:forward",
+      "incremental-search:backward"
+    ]
+  },
+  "repository": "https://github.com/gangstead/atom-incremental-search",
+  "bugs": "https://github.com/gangstead/atom-incremental-search/issues",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "emissary": "1.x",
+    "underscore-plus": "1.x",
+    "atom-space-pen-views": "^2.0.3"
+  },
+  "configSchema": {
+    "instantSearch": {
+      "type": "boolean",
+      "default": false,
+      "description": "Search as you type, instead of waiting until you stop typing."
+    },
+    "keepOptionsAfterSearch": {
+      "type": "boolean",
+      "default": true,
+      "description": "Keep the values of the Match Case and Use Regex options between searches."
+    },
+    "landAtPointInsteadOfRange": {
+      "type": "boolean",
+      "default": false,
+      "description": "Leave your cursor at a single point instead of selecting your search term."
+    },
+    "cancelSearchOnBlur": {
+      "type": "boolean",
+      "default": false,
+      "description": "Cancel the search on blur event, i.e. clicking outside of the search bar."
+    }
+  }
+}

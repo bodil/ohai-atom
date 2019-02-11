@@ -1,0 +1,29 @@
+
+# Keys that take effect in any normal text editor (not minibuffers).
+
+'.platform-darwin atom-workspace atom-text-editor:not(.mini)':
+  'cmd-i': 'incremental-search:forward'
+  'shift-cmd-i': 'incremental-search:backward'
+
+'.platform-win32 atom-workspace atom-text-editor:not(.mini), .platform-linux atom-workspace atom-text-editor:not(.mini)':
+  'ctrl-i': 'incremental-search:forward'
+  'shift-ctrl-i': 'incremental-search:backward'
+
+# Keys that only take effect in the incremental-search edit control (which has class
+# "isearch"). This means `cmd-r` in the text editor is not overridden.
+
+'.platform-darwin atom-workspace .isearch atom-text-editor':
+  'cmd-i': 'incremental-search:forward'
+  'shift-cmd-i': 'incremental-search:backward'
+  'cmd-r' : 'incremental-search:toggle-regex-option'
+  'cmd-c' : 'incremental-search:toggle-case-option'
+  'cmd-enter' : 'incremental-search:focus-editor'
+  'cmd-e' : 'incremental-search:slurp'
+
+'.platform-win32 atom-workspace .isearch atom-text-editor, .platform-linux atom-workspace .isearch atom-text-editor':
+  'ctrl-i': 'incremental-search:forward'
+  'shift-ctrl-i': 'incremental-search:backward'
+  'ctrl-r' : 'incremental-search:toggle-regex-option'
+  'ctrl-c' : 'incremental-search:toggle-case-option'
+  'ctrl-enter' : 'incremental-search:focus-editor'
+  'ctrl-e' : 'incremental-search:slurp'

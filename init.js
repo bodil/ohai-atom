@@ -212,15 +212,19 @@ usePackage("find-and-replace", {
   }
 });
 
-usePackage("incsearch", {
+usePackage("incremental-search", {
   keymap: {
     "atom-workspace atom-text-editor.emacs-plus:not([mini])": {
-      "ctrl-s": "toggle",
-      "ctrl-r": "toggle"
+      "ctrl-s": "forward",
+      "ctrl-r": "backward"
     },
-    ".incsearch": {
-      "ctrl-s": "incsearch:goto:next-match",
-      "ctrl-r": "incsearch:goto:prev-match"
+    "atom-workspace .isearch atom-text-editor": {
+      "ctrl-s": "forward",
+      "ctrl-r": "backward",
+      "alt-r": "toggle-regex-option",
+      "alt-s": "toggle-case-option",
+      "ctrl-e": "slurp",
+      "ctrl-enter": "focus-editor"
     }
   }
 });

@@ -1,0 +1,38 @@
+
+@import "ui-variables";
+@import "syntax-variables";
+
+.isearch {
+  .find-container {
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+
+    .btn-group {
+      margin-left: @component-padding;
+    }
+
+    .editor-container {
+      position: relative;
+      -webkit-flex: 1;
+
+      atom-text-editor {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// I'm defaulting to the same values that the find-and-replace package is using since they are
+// the same concept.  I want this package to work seamlessly with that one.
+
+atom-text-editor .isearch-result .region {
+  background-color: transparent;
+  border-radius: @component-border-radius;
+  border: 1px solid @syntax-result-marker-color;
+}
+
+atom-text-editor .isearch-current .region {
+  background-color: transparent;
+  border-radius: @component-border-radius;
+  border: 1px solid @syntax-result-marker-color-selected;
+}
