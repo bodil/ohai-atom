@@ -349,14 +349,6 @@ usePackage("travis-ci-status", {
   }
 });
 
-usePackage("rustsym", {
-  keymap: {
-    "atom-workspace atom-text-editor": {
-      "ctrl-.": "symbols-view:toggle-file-symbols"
-    }
-  }
-});
-
 usePackage("narrow", {
   keymap: {
     "atom-workspace atom-text-editor.emacs-plus:not([mini])": {
@@ -368,13 +360,13 @@ usePackage("narrow", {
       "ctrl-f": "narrow:focus",
       "ctrl-i": "narrow:focus-prompt"
     },
-    ".narrow-editor": {
+    "atom-workspace.has-narrow atom-text-editor.narrow-editor": {
       "ctrl-g": "close",
       enter: "core:confirm",
-      backspace: "narrow-ui:exclude-file",
-      "ctrl-backspace": "narrow-ui:clear-excluded-files",
-      n: "narrow-ui:move-to-next-file-item",
-      p: "narrow-ui:move-to-previous-file-item",
+      "ctrl-backspace": "narrow-ui:exclude-file",
+      "ctrl-alt-backspace": "narrow-ui:clear-excluded-files",
+      // n: "narrow-ui:move-to-next-file-item",
+      // p: "narrow-ui:move-to-previous-file-item",
       "ctrl-f": "narrow:focus",
       "ctrl-i": "narrow:focus-prompt",
       "ctrl-t": "narrow:relocate"
@@ -402,10 +394,10 @@ usePackage("atom-ide-ui", {
     "atom-workspace atom-text-editor.emacs-plus:not([mini])": {
       "alt-n": "diagnostics:go-to-next-diagnostic",
       "alt-p": "diagnostics:go-to-previous-diagnostic",
-      "ctrl-c s": "diagnostics:show-actions-at-position",
+      "ctrl-c a": "diagnostics:show-actions-at-position",
       "ctrl-c alt-s": "diagnostics:fix-all-in-current-file",
       "ctrl-c r": "find-references:activate",
-      "ctrl-t": "datatip:toggle",
+      "alt-t": "datatip:toggle",
       "alt-.": "hyperclick:confirm-cursor"
     },
     "atom-workspace": {
@@ -460,7 +452,14 @@ usePackage("ide-rust", {
 usePackage("build-cargo");
 
 usePackage("autocomplete-crates");
-// usePackage("rustsym");
+
+usePackage("rustsym", {
+  keymap: {
+    "atom-workspace atom-text-editor[data-grammar='source rust']": {
+      "ctrl-t": "symbols-view:toggle-file-symbols"
+    }
+  }
+});
 
 //
 //
