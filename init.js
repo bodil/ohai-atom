@@ -166,6 +166,8 @@ usePackage("file-icons");
 //   }
 // });
 
+usePackage("pane-titles");
+
 usePackage("advanced-open-file", {
   config: {
     createDirectories: true,

@@ -1,3 +1,5 @@
+@import "ui-variables";
+
 div.terminal {
   // fix a bug where atom-ide stylesheets get so aggressive they override their
   // own settings 👍
@@ -10,5 +12,20 @@ div.terminal {
 }
 
 atom-text-editor.editor {
+  // disable font ligatures
   -webkit-font-feature-settings: "liga" off, "calt" off;
+}
+
+
+
+// tune pane-titles to be more subtle
+
+.pane-info {
+  background: @tab-background-color;
+  color: @text-color-highlight;
+}
+
+.pane-info.active {
+  background: @background-color-selected;
+  color: @text-color-selected;
 }
