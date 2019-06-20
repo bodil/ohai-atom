@@ -384,6 +384,14 @@ usePackage("autoclose-html", {
   enableKeys: true
 });
 
+usePackage("character-table-plus", {
+  keymap: {
+    "atom-workspace atom-text-editor": {
+      "ctrl-x 8": "character-table:toggle"
+    }
+  }
+});
+
 //
 //
 // Atom IDE
