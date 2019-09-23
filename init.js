@@ -160,12 +160,6 @@ usePackage("disable-keybindings", {
 usePackage("base16-syntax");
 usePackage("file-icons");
 
-// usePackage("monokai", {
-//   init: () => {
-//     atom.config.set("core.themes", ["atom-dark-ui", "monokai"]);
-//   }
-// });
-
 usePackage("pane-titles");
 
 usePackage("advanced-open-file", {
@@ -451,7 +445,7 @@ configSet(
 
 usePackage("ide-rust", {
   config: {
-    rlsToolchain: "nightly",
+    rlsToolchain: "stable",
     rlsDefaultConfig: {
       allTargets: "On",
       clippyPreference: "On"
@@ -485,7 +479,7 @@ usePackage("prettier-atom", {
   },
   config: {
     useEslint: true,
-    formatOnSave: false,
+    formatOnSave: true,
     singleQuote: false,
     trailingComma: false,
     bracketSpacing: false

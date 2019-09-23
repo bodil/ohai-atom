@@ -5,6 +5,7 @@ storage
 .apm
 .node-gyp
 .npm
+.atom-socket-secret-*
 /config.cson
 /github.cson
 /keymap.cson
