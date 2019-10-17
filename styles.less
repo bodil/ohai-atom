@@ -17,7 +17,6 @@ atom-text-editor.editor {
 }
 
 
-
 // tune pane-titles to be more subtle
 
 .pane-info {
@@ -28,4 +27,15 @@ atom-text-editor.editor {
 .pane-info.active {
   background: @background-color-selected;
   color: @text-color-selected;
+}
+
+// Tweak material dark theme
+
+atom-text-editor .cursor-line {
+  background: none;
+}
+
+atom-text-editor .gutter .line-number.cursor-line {
+  background-color: #111;
+  color: #aaa;
 }
