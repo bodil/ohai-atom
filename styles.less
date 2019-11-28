@@ -1,23 +1,18 @@
 @import "ui-variables";
 
 div.terminal {
-  // fix a bug where atom-ide stylesheets get so aggressive they override their
-  // own settings 👍
+  // Fix a bug where atom-ide stylesheets get so aggressive they override their
+  // own settings. 👍
   font-family: inherit;
 }
 
-.console .output-container {
-  // fix the build-tools pane font
-  font-family: PragmataPro;
-}
+// Disable font ligatures.
 
 atom-text-editor.editor {
-  // disable font ligatures
   -webkit-font-feature-settings: "liga" off, "calt" off;
 }
 
-
-// tune pane-titles to be more subtle
+// Tune pane-titles to be more subtle.
 
 .pane-info {
   background: @tab-background-color;
@@ -25,11 +20,13 @@ atom-text-editor.editor {
 }
 
 .pane-info.active {
-  background: @background-color-selected;
-  color: @text-color-selected;
+  // background: @background-color-selected;
+  background: #960051;
+  // color: @text-color-selected;
+  color: white;
 }
 
-// Tweak material dark theme
+// Tweak material dark theme to only highlight gutter on current line.
 
 atom-text-editor .cursor-line {
   background: none;

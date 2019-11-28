@@ -6,7 +6,7 @@ import {usePackage, configSet} from "atom-use-package";
 //
 // General options
 
-const darkThemes = ["atom-material-ui", "atom-material-syntax-dark"];
+const darkThemes = ["seti-ui", "atom-material-syntax-dark"];
 const lightThemes = ["one-light-ui", "atom-light-syntax"];
 
 configSet("core", {
@@ -158,16 +158,12 @@ usePackage("disable-keybindings", {
 
 usePackage("pane-titles");
 
-usePackage("atom-material-ui", {
+usePackage("seti-ui", {
   config: {
-    colors: {
-      abaseColor: "#960051",
-      genAccent: true
-    },
-    ui: {
-      panelContrast: true,
-      panelShadows: true
-    }
+    compactView: true,
+    displayIgnored: false,
+    hideTabs: true,
+    themeColor: "Purple"
   }
 });
 usePackage("atom-material-syntax-dark", {
