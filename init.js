@@ -522,3 +522,4 @@ usePackage("linter-jsonlint");
 usePackage("language-papyrus");
 usePackage("language-stellaris");
 usePackage("language-fish-shell");
+usePackage("language-powershell");
